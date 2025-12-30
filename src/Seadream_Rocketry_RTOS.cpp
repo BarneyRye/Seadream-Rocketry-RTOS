@@ -27,7 +27,7 @@
 #define Audio_DIN 25
 #define Audio_BCLK 26
 #define Audio_LRC 27
-#define SD_CS 5
+#define SD_CS 6
 
 //Log Rates
 #define initial_log_rate 50    // Hz
