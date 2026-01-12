@@ -86,7 +86,8 @@ void getData(data_struct *data_buffer); //Read sensors and fill data struct
 void getBufferLine(char *line, data_struct data_buffer); //Converts data struct to string line for block writing to SD card
 void char_buffer_write(uint8_t count, data_struct data_buffer, char data_char_buffer[][MAX_BUFFER_LENGTH]); //Writes line to array of char buffers
 void audio_start(uint32_t start_time, bool *audio_on); //Checks if it's time to start audio playback
-void logRate_reduce(uint32_t *log_rate, bool *reduced, uint32_t loop_start); //Checks if it's time to reduce log rate and reduces it
+void logRate_reduce(uint32_t *log_rate, bool *reduced, uint32_t loop_start, bool takeoff); //Checks if it's time to reduce log rate and reduces it
+void takeoff_detection(bool *takeoff); //Detects takeoff based on accelerometer data
 
 //FreeRTOS Tasks
 void SensorAudioTask(void *pvParameters); //Core 1 to handle sensor reading and audio playback
@@ -95,6 +96,7 @@ void LoggingTask(void *pvParameters); //Core 0 to handle logging data to SD card
 //Setup
 void setup() {
   Serial.begin(115200); //Begin serial communication
+  while(!Serial){delay(10);} //Wait for serial to connect
   Serial.println(F("Initialising...")); //Print initialising message
 
   //I2C
@@ -154,12 +156,18 @@ void loop() {
 //Sensor and Audio Task
 void SensorAudioTask(void *pvParameters) {
   static bool audio_on = false; //Audio playback flag
-  static uint32_t loop_start = millis(); //Loop start time
+  static bool takeoff = false;
   static uint32_t log_rate = 1000 / initial_log_rate; //Sets initial log rate in ms, converts from Hz
   static bool reduced = false; //Log rate reduced flag
   static uint32_t last_log = 0; //Last log time
+  static uint32_t loop_start = millis(); //Loop start time
 
   for (;;) { //Infinite loop for task
+    //Takeoff Detection
+    if (!takeoff) {//Calls takeoff detection function to update takeoff flag
+      takeoff_detection(&takeoff);
+      loop_start = millis(); //Reset loop start time untill takeoff detected
+    }
     //Audio Playback
     if (!audio_on) {audio_start(loop_start, &audio_on);} //If audio isn't on, check if it's time to start and start if so
     if (audio_on) { //If audio is on, call audio loop to keep playing
@@ -170,7 +178,7 @@ void SensorAudioTask(void *pvParameters) {
     }
 
     //Log Rate Reduction
-    if (!reduced) logRate_reduce(&log_rate, &reduced, loop_start); //If log rate hasn't been reduced yet, check if it's time to reduce it and reduce if so
+    if (!reduced) logRate_reduce(&log_rate, &reduced, loop_start, takeoff); //If log rate hasn't been reduced yet, check if it's time to reduce it and reduce if so
      
     //Data Logging
     if (millis() - last_log >= log_rate) { //If it's time to log data, i.e. time since last log >= log rate
@@ -259,8 +267,21 @@ void audio_start(uint32_t start_time, bool *audio_on) { //Checks if it's time to
   }
 }
 
-void logRate_reduce(uint32_t *log_rate, bool *reduced, uint32_t loop_start) { //Checks if it's time to reduce log rate and reduces it
-  if (millis() - loop_start >= (reduce_Hz_time * 1000)) { //If time since start >= reduce time
+void takeoff_detection(bool *takeoff) { //Detects takeoff based on accelerometer data
+  if (useBuffer1){
+    if (buffer1.altitude[bufferIndex]-buffer1.altiude[0] > 10){ //If altitude has increased by more than 10m since start
+      *takeoff = true; //Sets takeoff flag to true
+    }
+  }
+  else{
+    if (buffer2.altitude[bufferIndex]-buffer2.altiude[0] > 10){ //If altitude has increased by more than 10m since start
+      *takeoff = true; //Sets takeoff flag to true
+    }
+  }
+}
+
+void logRate_reduce(uint32_t *log_rate, bool *reduced, uint32_t loop_start, bool takeoff) { //Checks if it's time to reduce log rate and reduces it
+  if ((millis() - loop_start >= (reduce_Hz_time * 1000)) && takeoff) { //If time since start >= reduce time
     *log_rate = 1000 / final_log_rate; //Sets log rate to final log rate in ms, converts from Hz
     *reduced = true; //Sets reduced flag to true
   }
