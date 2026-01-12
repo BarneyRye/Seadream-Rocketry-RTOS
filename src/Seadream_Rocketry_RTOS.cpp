@@ -10,7 +10,7 @@
 Adafruit_LSM6DS
 Adafruit SHT4x and dependencies
 ESP32 AudioI2S
-Adafruit BMP085
+Adafruit BMP280
 */
 
 
@@ -20,7 +20,7 @@ Adafruit BMP085
 #include <Adafruit_Sensor.h> //Base sensor libary for Adafruit libaries
 #include <Adafruit_SHT4x.h> //Temperature and Humidity sensor libaries
 #include <Adafruit_LSM6DSO32.h>//Accelerometer and Gyro libary
-#include <Adafruit_BMP085.h>//Barometer libary
+#include <Adafruit_BMP280.h>//Barometer libary
 #include <SD.h> //SD card libary
 #include <SPI.h> //SPI libary
 #include <Audio.h> //Audio libary
@@ -49,7 +49,7 @@ Adafruit BMP085
 //Object creating from libaries
 Adafruit_SHT4x sht4 = Adafruit_SHT4x(); //Temperature and Humidity sensor
 Adafruit_LSM6DSO32 imu; //Accelerometer and Gyro
-Adafruit_BMP085 bmp; //Barometer
+Adafruit_BMP280 bmp; //Barometer
 Audio audio; //Audio player
 
 //Data Struct
@@ -108,12 +108,20 @@ void setup() {
 
   //Accelerometer and Gyro
   if (!imu.begin_I2C()) { Serial.println(F("Failed to find Accelerometer")); } //Begins I2C connection to Accel/Gyro, if fails, print failure to serial
+  imu.setAccelDataRate(LSM6DS_RATE_52_HZ); //Sets accelerometer data rate to 52Hz
   imu.setAccelRange(LSM6DSO32_ACCEL_RANGE_32_G); //Sets accelerometer range to 32G
+  imu.setGyroDataRate(LSM6DS_RATE_52_HZ); //Sets gyro data rate to 52Hz
   imu.setGyroRange(LSM6DS_GYRO_RANGE_2000_DPS); //Sets gyro range to 2000 degrees per second
 
   //Barometer
-  if (!bmp.begin()) { Serial.println(F("Failed to find Barometer")); } //Begins I2C connection to Barometer, if fails, print failure to serial
-
+  if (!bmp.begin(0x76)) { Serial.println(F("Failed to find Barometer")); } //Begins I2C connection to Barometer, if fails, print failure to serial
+  else{
+    bmp.setSampling(Adafruit_BMP280::MODE_NORMAL,
+                    Adafruit_BMP280::SAMPLING_X1,
+                    Adafruit_BMP280::SAMPLING_X1,    
+                    Adafruit_BMP280::FILTER_OFF,  
+                    Adafruit_BMP280::STANDBY_MS_1); 
+  }
   //Temperature and Humidity Sensor
   if (!sht4.begin(&Wire)) { Serial.println(F("Temperature/Humidity sensor not found")); } //Begins I2C connection to Temp/Humidity sensor, if fails, print failure to serial
 
@@ -286,7 +294,14 @@ void logRate_reduce(uint32_t *log_rate, bool *reduced, uint32_t loop_start, bool
   if ((millis() - loop_start >= (reduce_Hz_time * 1000)) && takeoff) { //If time since start >= reduce time
     *log_rate = 1000 / final_log_rate; //Sets log rate to final log rate in ms, converts from Hz
     *reduced = true; //Sets reduced flag to true
+    bmp.setSampling(Adafruit_BMP280::MODE_NORMAL,     
+                    Adafruit_BMP280::SAMPLING_X2,   
+                    Adafruit_BMP280::SAMPLING_X16, 
+                    Adafruit_BMP280::FILTER_X16,     
+                    Adafruit_BMP280::STANDBY_MS_63);
   }
+  imu.setAccelDataRate(LSM6DS_RATE_12_5_HZ); //Sets accelerometer data rate to 12.5Hz
+  imu.setGyroDataRate(LSM6DS_RATE_12_5_HZ); //Sets gyro data rate to 12.5Hz
 }
 
 void getData(data_struct *data_buffer) { //Reads sensors and fills data struct
@@ -301,9 +316,9 @@ void getData(data_struct *data_buffer) { //Reads sensors and fills data struct
   data_buffer->gz = gyro.gyro.z;
 
   //Barometer
-  data_buffer->temp_bmp = bmp.readTemperature(); //Reads data from BMP180 and fills data struct
+  data_buffer->temp_bmp = bmp.readTemperature(); //Reads data from BMP280 and fills data struct
   data_buffer->pressure = bmp.readPressure() / 1000; //Convert Pa to kPa
-  data_buffer->altitude = bmp.readAltitude(101325); //Assumes sea level pressure of 101325 Pa
+  data_buffer->altitude = bmp.readAltitude(1013.25); //Assumes sea level pressure of 101325 Pa
 
   //Temperature and Humidity Sensor
   sensors_event_t humidity, temp; //Create sensor event structs
