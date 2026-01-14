@@ -104,7 +104,7 @@ void setup() {
 
   //I2C
   Wire.begin(I2C_SDA, I2C_SCL); //Connect I2C to specified pins
-  Wire.setClock(400000); //Set I2C clock frequency to 400kHz
+  Wire.setClock(100000); //Set I2C clock frequency to 100kHz
 
   //SPI
   SPI.begin(SPI_SCK, SPI_MISO, SPI_MOSI); //Begin SPI for SD card
