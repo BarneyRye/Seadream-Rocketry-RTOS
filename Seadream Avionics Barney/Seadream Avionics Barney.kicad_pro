@@ -58,7 +58,20 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "lib_footprint_issues|153450000|96912500|63a6e9ad-064f-40cd-a818-67a486301241|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "silk_over_copper|162215784|66782284|14b71ad2-bfd8-4367-acdd-456da4290f8e|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "silk_over_copper|162226058|67760869|4b607187-aee5-4526-9e94-aee4b82e2d93|00000000-0000-0000-0000-000000000000",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -987,7 +1000,7 @@
           "group_by": false,
           "label": "Description",
           "name": "Description",
-          "show": false
+          "show": true
         },
         {
           "group_by": false,
@@ -1000,6 +1013,12 @@
           "label": "PART_REV",
           "name": "PART_REV",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Part NO.",
+          "name": "Part NO.",
+          "show": true
         }
       ],
       "filter_string": "",
@@ -1007,7 +1026,7 @@
       "include_excluded_from_bom": true,
       "name": "",
       "sort_asc": true,
-      "sort_field": "Reference"
+      "sort_field": "${EXCLUDE_FROM_BOARD}"
     },
     "connection_grid_size": 50.0,
     "drawing": {

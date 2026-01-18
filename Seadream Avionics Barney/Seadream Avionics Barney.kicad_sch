@@ -8772,7 +8772,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8550724080677908480"
 			(at 139.7 91.44 0)
 			(effects
 				(font
@@ -8781,7 +8781,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Light emitting diode"
+		(property "Description" "NCD0805R1"
 			(at 139.7 91.44 0)
 			(effects
 				(font
@@ -8792,6 +8792,15 @@
 		)
 		(property "Sim.Pins" "1=K 2=A"
 			(at 139.7 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C84256"
+			(at 139.7 91.44 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8918,7 +8927,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588916370310369280"
 			(at 186.69 43.18 0)
 			(effects
 				(font
@@ -8927,7 +8936,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "KMR221GLFS"
 			(at 186.69 43.18 0)
 			(effects
 				(font
@@ -9026,6 +9035,15 @@
 				(hide yes)
 			)
 		)
+		(property "Part NO." "C72443"
+			(at 186.69 43.18 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "e09a721d-be5b-4c6e-917b-ecf85ddca780")
 		)
@@ -9086,7 +9104,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588886586771845120"
 			(at 160.02 127 0)
 			(effects
 				(font
@@ -9095,7 +9113,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LD39200PU33R"
 			(at 160.02 127 0)
 			(effects
 				(font
@@ -9624,6 +9642,15 @@
 				(hide yes)
 			)
 		)
+		(property "Part NO." "C222192"
+			(at 160.02 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "6"
 			(uuid "39c06945-95d3-4ca0-a835-bddae1e1e150")
 		)
@@ -9691,7 +9718,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579706866429190144"
 			(at 187.96 124.46 0)
 			(effects
 				(font
@@ -9700,7 +9727,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "CL21A226MAQNNNE"
+			(at 187.96 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C45783"
 			(at 187.96 124.46 0)
 			(effects
 				(font
@@ -9890,7 +9926,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579706036003409920"
 			(at 29.21 119.38 0)
 			(effects
 				(font
@@ -9899,8 +9935,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "0402WGF5101TCE"
 			(at 29.21 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C25905"
+			(at 29.21 119.38 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10026,7 +10071,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707107920437248"
 			(at 129.54 123.19 0)
 			(effects
 				(font
@@ -10035,7 +10080,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "CL10A106KP8NNNC"
+			(at 129.54 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C19702"
 			(at 129.54 123.19 0)
 			(effects
 				(font
@@ -10095,7 +10149,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680"
 			(at 154.94 170.18 0)
 			(effects
 				(font
@@ -10104,7 +10158,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "CL05B104KO5NNNC"
+			(at 154.94 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C1525"
 			(at 154.94 170.18 0)
 			(effects
 				(font
@@ -10362,7 +10425,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680"
 			(at 276.86 66.04 0)
 			(effects
 				(font
@@ -10371,7 +10434,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "CL05B104KO5NNNC"
+			(at 276.86 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C1525"
 			(at 276.86 66.04 0)
 			(effects
 				(font
@@ -10431,7 +10503,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707174974914560"
 			(at 167.64 170.18 0)
 			(effects
 				(font
@@ -10440,7 +10512,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "CL05A105KA5NQNC"
+			(at 167.64 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C52923"
 			(at 167.64 170.18 0)
 			(effects
 				(font
@@ -10500,7 +10581,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8586198736901459968"
 			(at 170.18 80.01 0)
 			(effects
 				(font
@@ -10509,7 +10590,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LD1117S33TR"
 			(at 170.18 80.01 0)
 			(effects
 				(font
@@ -10615,6 +10696,15 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C86781"
+			(at 170.18 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)
@@ -10741,7 +10831,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680"
 			(at 265.43 124.46 0)
 			(effects
 				(font
@@ -10750,7 +10840,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "CL05B104KO5NNNC"
+			(at 265.43 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C1525"
 			(at 265.43 124.46 0)
 			(effects
 				(font
@@ -11074,7 +11173,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680"
 			(at 180.34 39.37 0)
 			(effects
 				(font
@@ -11083,7 +11182,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "CL05B104KO5NNNC"
+			(at 180.34 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C1525"
 			(at 180.34 39.37 0)
 			(effects
 				(font
@@ -11209,7 +11317,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588886693302161408"
 			(at 46.99 175.26 0)
 			(effects
 				(font
@@ -11218,7 +11326,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MAX98357AETE_T"
 			(at 46.99 175.26 0)
 			(effects
 				(font
@@ -11317,6 +11425,15 @@
 				(hide yes)
 			)
 		)
+		(property "Part NO." "C910544"
+			(at 46.99 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "14"
 			(uuid "06368c12-0b6e-4317-9622-96787dd0fc20")
 		)
@@ -11401,7 +11518,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680"
 			(at 78.74 27.94 0)
 			(effects
 				(font
@@ -11410,7 +11527,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "CL05B104KO5NNNC"
+			(at 78.74 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C1525"
 			(at 78.74 27.94 0)
 			(effects
 				(font
@@ -11536,7 +11662,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588881905890156544"
 			(at 245.11 27.94 0)
 			(effects
 				(font
@@ -11545,7 +11671,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "BMP280"
 			(at 245.11 27.94 0)
 			(effects
 				(font
@@ -11674,6 +11800,15 @@
 				(hide yes)
 			)
 		)
+		(property "Part NO." "C83291"
+			(at 245.11 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "8"
 			(uuid "1ef65c4b-b7c4-4b46-8653-35af5e2aa5ad")
 		)
@@ -11744,7 +11879,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579706223213461504"
 			(at 139.7 83.82 0)
 			(effects
 				(font
@@ -11753,7 +11888,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "0603WAF3300T5E"
+			(at 139.7 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C23138"
 			(at 139.7 83.82 0)
 			(effects
 				(font
@@ -11814,7 +11958,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579705941367193600"
 			(at 86.36 48.26 0)
 			(effects
 				(font
@@ -11823,7 +11967,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "0402WGF4701TCE"
+			(at 86.36 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C25900"
 			(at 86.36 48.26 0)
 			(effects
 				(font
@@ -11884,7 +12037,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579706178210742272"
 			(at 115.57 123.19 0)
 			(effects
 				(font
@@ -11893,7 +12046,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "0603WAF2200T5E"
+			(at 115.57 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C22962"
 			(at 115.57 123.19 0)
 			(effects
 				(font
@@ -12020,7 +12182,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579706178210742272"
 			(at 194.31 123.19 0)
 			(effects
 				(font
@@ -12029,7 +12191,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "0603WAF2200T5E"
+			(at 194.31 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C22962"
 			(at 194.31 123.19 0)
 			(effects
 				(font
@@ -12089,7 +12260,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680"
 			(at 85.09 165.1 0)
 			(effects
 				(font
@@ -12098,7 +12269,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "CL05B104KO5NNNC"
+			(at 85.09 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C1525"
 			(at 85.09 165.1 0)
 			(effects
 				(font
@@ -12158,7 +12338,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://documentation.espressif.com/esp32-s3-mini-1_mini-1u_datasheet_en.pdf"
 			(at 54.61 59.69 0)
 			(effects
 				(font
@@ -12167,7 +12347,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "ESP32-S3-MINI-1U-N8"
 			(at 54.61 59.69 0)
 			(effects
 				(font
@@ -12303,6 +12483,15 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C2980299"
+			(at 54.61 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)
@@ -12570,7 +12759,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588881989415931904"
 			(at 186.69 24.13 0)
 			(effects
 				(font
@@ -12579,7 +12768,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "0402WGJ0103TCE"
+			(at 186.69 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C25531"
 			(at 186.69 24.13 0)
 			(effects
 				(font
@@ -12639,7 +12837,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707107920437248"
 			(at 90.17 27.94 0)
 			(effects
 				(font
@@ -12648,7 +12846,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "CL10A106KP8NNNC"
+			(at 90.17 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C19702"
 			(at 90.17 27.94 0)
 			(effects
 				(font
@@ -12709,7 +12916,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8550724080677908480"
 			(at 194.31 130.81 0)
 			(effects
 				(font
@@ -12718,7 +12925,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Light emitting diode"
+		(property "Description" "NCD0805R1"
 			(at 194.31 130.81 0)
 			(effects
 				(font
@@ -12729,6 +12936,15 @@
 		)
 		(property "Sim.Pins" "1=K 2=A"
 			(at 194.31 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C84256"
+			(at 194.31 130.81 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12852,7 +13068,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588889744620572672"
 			(at 105.41 119.38 0)
 			(effects
 				(font
@@ -12861,7 +13077,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x02, script generated"
+		(property "Description" "B2B-PH-K-S(LF)(SN)"
+			(at 105.41 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C131337"
 			(at 105.41 119.38 0)
 			(effects
 				(font
@@ -13120,7 +13345,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579705941367193600"
 			(at 78.74 48.26 0)
 			(effects
 				(font
@@ -13129,7 +13354,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "0402WGF4701TCE"
+			(at 78.74 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C25900"
 			(at 78.74 48.26 0)
 			(effects
 				(font
@@ -13254,7 +13488,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680"
 			(at 273.05 31.75 0)
 			(effects
 				(font
@@ -13263,7 +13497,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "CL05B104KO5NNNC"
+			(at 273.05 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C1525"
 			(at 273.05 31.75 0)
 			(effects
 				(font
@@ -13304,7 +13547,7 @@
 				)
 			)
 		)
-		(property "Value" "C393939"
+		(property "Value" "TYPE-C16PIN"
 			(at 51.562 111.76 0)
 			(effects
 				(font
@@ -13312,7 +13555,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TYPE-C_16PIN_2MD__073_:SHOUHAN_TYPE-C_16PIN_2MD__073_"
+		(property "Footprint" "2FOOTPRINTS:SHOUHAN_TYPE-C_16PIN_2MD__073_"
 			(at 52.07 125.73 0)
 			(effects
 				(font
@@ -13322,7 +13565,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588893971980423168"
 			(at 52.07 125.73 0)
 			(effects
 				(font
@@ -13331,7 +13574,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "TYPE-C16PIN"
 			(at 52.07 125.73 0)
 			(effects
 				(font
@@ -13480,6 +13723,15 @@
 				(hide yes)
 			)
 		)
+		(property "Part NO." "C393939"
+			(at 52.07 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "B1_A12"
 			(uuid "24f731f8-9a85-4dc5-8407-b70bb1eae68c")
 		)
@@ -13571,7 +13823,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579706036003409920"
 			(at 73.66 128.27 0)
 			(effects
 				(font
@@ -13580,8 +13832,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "0402WGF5101TCE"
 			(at 73.66 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C25905"
+			(at 73.66 128.27 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13705,7 +13966,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588889744620572672"
 			(at 74.93 170.18 0)
 			(effects
 				(font
@@ -13714,7 +13975,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x02, script generated"
+		(property "Description" "B2B-PH-K-S(LF)(SN)"
+			(at 74.93 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C131337"
 			(at 74.93 170.18 0)
 			(effects
 				(font
@@ -13840,7 +14110,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588907595537399808"
 			(at 246.38 124.46 0)
 			(effects
 				(font
@@ -13849,7 +14119,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "SHT40-AD1B-R3"
 			(at 246.38 124.46 0)
 			(effects
 				(font
@@ -13948,6 +14218,15 @@
 				(hide yes)
 			)
 		)
+		(property "Part NO." "C2848306"
+			(at 246.38 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "4"
 			(uuid "be6fd749-dc69-4ae4-88cb-9f7670a0fe78")
 		)
@@ -14006,7 +14285,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588881989415931904"
 			(at 104.14 177.8 0)
 			(effects
 				(font
@@ -14015,7 +14294,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "0402WGJ0103TCE"
+			(at 104.14 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C25531"
 			(at 104.14 177.8 0)
 			(effects
 				(font
@@ -14207,7 +14495,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680"
 			(at 266.7 69.85 0)
 			(effects
 				(font
@@ -14216,7 +14504,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "CL05B104KO5NNNC"
+			(at 266.7 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C1525"
 			(at 266.7 69.85 0)
 			(effects
 				(font
@@ -14343,7 +14640,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707107920437248"
 			(at 149.86 85.09 0)
 			(effects
 				(font
@@ -14352,7 +14649,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "CL10A106KP8NNNC"
+			(at 149.86 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C19702"
 			(at 149.86 85.09 0)
 			(effects
 				(font
@@ -14478,7 +14784,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680"
 			(at 261.62 31.75 0)
 			(effects
 				(font
@@ -14487,7 +14793,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "CL05B104KO5NNNC"
+			(at 261.62 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C1525"
 			(at 261.62 31.75 0)
 			(effects
 				(font
@@ -14595,7 +14910,7 @@
 				)
 			)
 		)
-		(property "Value" "C91145"
+		(property "Value" "TF-01A"
 			(at 133.35 161.29 0)
 			(effects
 				(font
@@ -14613,7 +14928,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588894212661764096"
 			(at 133.35 173.99 0)
 			(effects
 				(font
@@ -14622,7 +14937,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "TF-01A"
 			(at 133.35 173.99 0)
 			(effects
 				(font
@@ -14708,6 +15023,15 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C91145"
+			(at 133.35 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)
@@ -15059,7 +15383,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707107920437248"
 			(at 195.58 82.55 0)
 			(effects
 				(font
@@ -15068,7 +15392,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "CL10A106KP8NNNC"
+			(at 195.58 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C19702"
 			(at 195.58 82.55 0)
 			(effects
 				(font
@@ -15129,7 +15462,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8550724080677908480"
 			(at 115.57 130.81 0)
 			(effects
 				(font
@@ -15138,7 +15471,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Light emitting diode"
+		(property "Description" "NCD0805R1"
 			(at 115.57 130.81 0)
 			(effects
 				(font
@@ -15149,6 +15482,15 @@
 		)
 		(property "Sim.Pins" "1=K 2=A"
 			(at 115.57 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C84256"
+			(at 115.57 130.81 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15470,7 +15812,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588917637593751552"
 			(at 124.46 30.48 0)
 			(effects
 				(font
@@ -15479,7 +15821,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Switch, single pole double throw"
+		(property "Description" "SSSS810701"
+			(at 124.46 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C97433"
 			(at 124.46 38.1 0)
 			(effects
 				(font
@@ -15542,7 +15893,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588881989415931904"
 			(at 133.35 38.1 0)
 			(effects
 				(font
@@ -15551,7 +15902,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "0402WGJ0103TCE"
+			(at 133.35 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C25531"
 			(at 133.35 38.1 0)
 			(effects
 				(font
@@ -15807,7 +16167,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588926227138138112"
 			(at 243.84 74.93 0)
 			(effects
 				(font
@@ -15816,7 +16176,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LSM6DSO32TR"
 			(at 243.84 74.93 0)
 			(effects
 				(font
@@ -15952,6 +16312,15 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Part NO." "C1864162"
+			(at 243.84 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)

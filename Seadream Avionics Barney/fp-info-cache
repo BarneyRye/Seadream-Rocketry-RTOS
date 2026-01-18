@@ -1,4 +1,4 @@
-26813280434150352
+26783250774658099
 2FOOTPRINTS
 BMP180
 
@@ -97,20 +97,6 @@ audio belton reverb
 0
 7
 7
-B2B-PH-K-S_LF__SN_
-JST_B2B-PH-K-S_LF__SN_
-
-
-0
-2
-2
-BME280
-PSON65P250X250X100-8N
-2.5 mm x 2.5 mm x 0.93 mm metal lid LGA
-
-0
-8
-8
 Battery
 BatteryClip_Keystone_54_D16-19mm
 Battery clip for batteries with a diameter between 16-19 mm: https://www.keyelco.com/product.cfm/product_id/826
@@ -2908,13 +2894,6 @@ Buzzer_Beeper
 Speaker_CUI_CMR-1206S-67
 Speaker, 30mW, 300-7000Hz, IP67 face, 12x6x2,25mm, https://www.cuidevices.com/product/resource/cmr-12062s-67.pdf
 speaker CUI
-0
-2
-2
-CR2032-BS-6-1
-BAT_CR2032-BS-6-1
-
-
 0
 2
 2
@@ -59457,34 +59436,6 @@ ceramic
 0
 3
 3
-Custom
-KEY-SMD_4P-L6.0-W6.0-P4.50-LS10.0
-
-
-0
-4
-4
-Custom
-SW-SMD_SSSS810701
-
-
-0
-3
-3
-Custom
-TF-01A
-<b>TF-01A-6</b><br>
-
-0
-13
-13
-Custom
-Untitled
-
-
-0
-0
-0
 Diode_SMD
 D_0201_0603Metric
 Diode SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator
@@ -69453,20 +69404,6 @@ solder jumper open
 0
 3
 3
-KiCADv6
-RLT0007A
-
-TPS62086RLTR 
-0
-7
-7
-LD39200PU33R
-SON95P300X300X100-7N
-
-
-0
-7
-7
 LED_SMD
 LED-APA102-2020
 http://www.led-color.com/upload/201604/APA102-2020%20SMD%20LED.pdf
@@ -70720,27 +70657,6 @@ Yellow 5381 Series LED
 0
 2
 2
-LIS2MDLTR
-PQFN50P200X200X70-12N
-
-
-0
-12
-12
-LSM6DSO32TR
-XDCR_LSM6DSO32TR
-
-
-0
-14
-14
-MAX98357AETE+T
-QFN50P300X300X80-17N
-
-
-0
-17
-17
 Module
 A20_OLINUXINO_LIME2
 A20 Olinuxino LIME2, 1.2GHz, 512-1024MB RAM, Micro-SD, NAND or eMMC, 1000Mbit Ethernet
@@ -97446,20 +97362,6 @@ rotary encoder illuminated switch vertical
 0
 9
 8
-SS34
-DIO_SS34
-
-
-0
-2
-2
-STM32H747BIT6
-QFP50P3000X3000X160-208N
-
-
-0
-208
-208
 Sensor
 ASAIR_AM2302_P2.54mm_Lead2.75mm_TabDown
 Temperature and humidity module, http://akizukidenshi.com/download/ds/aosong/AM2302.pdf
@@ -99560,20 +99462,6 @@ Logo WEEE
 0
 0
 0
-TF-01A
-TF-01A
-<b>TF-01A-6</b><br>
-
-0
-13
-13
-TYPE-C_16PIN_2MD__073_
-SHOUHAN_TYPE-C_16PIN_2MD__073_
-
-
-0
-16
-16
 TerminalBlock
 TerminalBlock_MaiXu_MX126-5.0-02P_1x02_P5.00mm
 terminal block MaiXu MX126-5.0-02P, 2 pins, pitch 5mm, size 10.5x7.8mm, drill diameter 1.3mm, pad diameter 2.8mm, https://www.lcsc.com/datasheet/lcsc_datasheet_2309150913_MAX-MX126-5-0-03P-GN01-Cu-S-A_C5188435.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/-/tree/master/scripts/TerminalBlock_MaiXu
@@ -106560,10 +106448,3 @@ Varistor VF
 0
 2
 2
-footprints
-USB4215-03-A
-
-
-0
-12
-12

@@ -1,23 +1,23 @@
-﻿Designator,Footprint,Quantity,Value,LCSC Part #
-"C1, C12, C13, C14, C3, C4, C5, C6, C7",0402,9,100nF,
-"C10, C2, C8, C9",0603,4,10uF,
-C11,0805,1,22uF,
-C15,0402,1,1uF,
-"D1, D2, D3",0805,3,LED,
-"J1, J3",JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical,2,B2B-PH-K-S(LF)(SN),
-J2,SHOUHAN_TYPE-C_16PIN_2MD__073_,1,C393939,
-MICRO_SD1,TF-01A,1,C91145,
-"R1, R11, R2",0402,3,10k,
-"R10, R7",0402,2,5k1,
-"R3, R4",0402,2,4k7,
-R5,0603,1,330,
-"R8, R9",0603,2,220,
-S1,SW_KMR221GLFS,1,KMR221GLFS,
-SW1,SW-SMD_SSSS810701,1,SSSS810701,
-U1,XDCR_BMP280,1,BMP280,
-U2,ESP32-S2-MINI-1U,1,ESP32-S3-MINI-1U-N8,
-U3,XDCR_LSM6DSO32TR,1,LSM6DSO32TR,
-U4,SOT230P700X180-4N,1,LD1117S33TR,
-U5,SHT4X,1,SHT40-AD1B-R3,
-U6,SON95P300X300X100-7N,1,LD39200PU33R,
-U7,QFN50P300X300X80-17N,1,MAX98357AETE_T,
+"Reference","Qty","Value","DNP","Exclude from BOM","Exclude from Board","Footprint","Datasheet","Description","Part NO."
+"C1,C3,C4,C5,C6,C7,C12,C13,C14","9","100nF","","","","Capacitor_SMD:C_0402_1005Metric","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680","CL05B104KO5NNNC","C1525"
+"C2,C8,C9,C10","4","10uF","","","","Capacitor_SMD:C_0603_1608Metric","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707107920437248","CL10A106KP8NNNC","C19702"
+"C11","1","22uF","","","","Capacitor_SMD:C_0805_2012Metric","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579706866429190144","CL21A226MAQNNNE","C45783"
+"C15","1","1uF","","","","Capacitor_SMD:C_0402_1005Metric","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707174974914560","CL05A105KA5NQNC","C52923"
+"D1,D2,D3","3","LED","","","","LED_SMD:LED_0805_2012Metric","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8550724080677908480","NCD0805R1","C84256"
+"J1,J3","2","B2B-PH-K-S(LF)(SN)","","","","Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588889744620572672","B2B-PH-K-S(LF)(SN)","C131337"
+"J2","1","TYPE-C16PIN","","","","2FOOTPRINTS:SHOUHAN_TYPE-C_16PIN_2MD__073_","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588893971980423168","TYPE-C16PIN","C393939"
+"MICRO_SD1","1","TF-01A","","","","2FOOTPRINTS:TF-01A","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588894212661764096","TF-01A","C91145"
+"R1,R2,R11","3","10k","","","","Resistor_SMD:R_0402_1005Metric","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588881989415931904","0402WGJ0103TCE","C25531"
+"R3,R4","2","4k7","","","","Resistor_SMD:R_0402_1005Metric","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579705941367193600","0402WGF4701TCE","C25900"
+"R5","1","330","","","","Resistor_SMD:R_0603_1608Metric","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579706223213461504","0603WAF3300T5E","C23138"
+"R7,R10","2","5k1","","","","Resistor_SMD:R_0402_1005Metric","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579706036003409920","0402WGF5101TCE","C25905"
+"R8,R9","2","220","","","","Resistor_SMD:R_0603_1608Metric","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579706178210742272","0603WAF2200T5E","C22962"
+"S1","1","KMR221GLFS","","","","2FOOTPRINTS:SW_KMR221GLFS","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588916370310369280","KMR221GLFS","C72443"
+"SW1","1","SSSS810701","","","","2FOOTPRINTS:SW-SMD_SSSS810701","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588917637593751552","SSSS810701","C97433"
+"U1","1","BMP280","","","","2FOOTPRINTS:XDCR_BMP280","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588881905890156544","BMP280","C83291"
+"U2","1","ESP32-S3-MINI-1U-N8","","","","RF_Module:ESP32-S2-MINI-1U","https://documentation.espressif.com/esp32-s3-mini-1_mini-1u_datasheet_en.pdf","ESP32-S3-MINI-1U-N8","C2980299"
+"U3","1","LSM6DSO32TR","","","","2FOOTPRINTS:XDCR_LSM6DSO32TR","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588926227138138112","LSM6DSO32TR","C1864162"
+"U4","1","LD1117S33TR","","","","2FOOTPRINTS:SOT230P700X180-4N","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8586198736901459968","LD1117S33TR","C86781"
+"U5","1","SHT40-AD1B-R3","","","","2FOOTPRINTS:SHT4X","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588907595537399808","SHT40-AD1B-R3","C2848306"
+"U6","1","LD39200PU33R","","","","2FOOTPRINTS:SON95P300X300X100-7N","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588886586771845120","LD39200PU33R","C222192"
+"U7","1","MAX98357AETE_T","","","","2FOOTPRINTS:QFN50P300X300X80-17N","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588886693302161408","MAX98357AETE_T","C910544"
