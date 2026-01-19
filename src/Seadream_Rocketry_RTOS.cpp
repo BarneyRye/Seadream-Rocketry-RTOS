@@ -147,7 +147,7 @@ void setup() {
 
   //Audio
   audio.setPinout(Audio_BCLK, Audio_LRC, Audio_DIN); //Connects audio AMP to specified pins
-  audio.setVolume(15);  // 1-21, Sets volume
+  audio.setVolume(10);  // 1-21, Sets volume
 
   //FreeRTOS Queue
   logQueue = xQueueCreate(2, sizeof(bool)); //Create queue to hold 2 buffer ready flags
