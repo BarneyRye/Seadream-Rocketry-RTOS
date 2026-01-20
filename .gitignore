@@ -4,6 +4,7 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch/
+.Seadream Avionics PCB/Seadream Avionics PCB-backups/
 
 # Build artifacts
 *.elf
