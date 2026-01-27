@@ -352,37 +352,66 @@ void logRate_reduce(uint32_t *log_rate, bool *reduced, uint32_t loop_start, bool
   if ((millis() - loop_start >= (reduce_Hz_time * 1000)) && takeoff) { //If time since start >= reduce time
     *log_rate = 1000 / final_log_rate; //Sets log rate to final log rate in ms, converts from Hz
     *reduced = true; //Sets reduced flag to true
-    bmp.setSampling(Adafruit_BMP280::MODE_NORMAL,     
-                    Adafruit_BMP280::SAMPLING_X2,   
-                    Adafruit_BMP280::SAMPLING_X16, 
-                    Adafruit_BMP280::FILTER_X16,     
-                    Adafruit_BMP280::STANDBY_MS_63);
+    if (bmp_connected) {
+      bmp.setSampling(Adafruit_BMP280::MODE_NORMAL,     
+                      Adafruit_BMP280::SAMPLING_X2,   
+                      Adafruit_BMP280::SAMPLING_X16, 
+                      Adafruit_BMP280::FILTER_X16,     
+                      Adafruit_BMP280::STANDBY_MS_63);
+    }
+    if (imu_connected) {
+      imu.setAccelDataRate(LSM6DS_RATE_12_5_HZ); //Sets accelerometer data rate to 12.5Hz
+      imu.setGyroDataRate(LSM6DS_RATE_12_5_HZ); //Sets gyro data rate to 12.5Hz
+    
+    }
   }
-  imu.setAccelDataRate(LSM6DS_RATE_12_5_HZ); //Sets accelerometer data rate to 12.5Hz
-  imu.setGyroDataRate(LSM6DS_RATE_12_5_HZ); //Sets gyro data rate to 12.5Hz
 }
 
 void getData(data_struct *data_buffer) { //Reads sensors and fills data struct
   //Accelerometer and Gyro
-  sensors_event_t accel, gyro, temp_imu; //Create sensor event structs
-  imu.getEvent(&accel, &gyro, &temp_imu); //Reads sensor data into structs
-  data_buffer->ax = accel.acceleration.x; //Fills data struct with accel and gyro data
-  data_buffer->ay = accel.acceleration.y;
-  data_buffer->az = accel.acceleration.z;
-  data_buffer->gx = gyro.gyro.x;
-  data_buffer->gy = gyro.gyro.y;
-  data_buffer->gz = gyro.gyro.z;
+  if (!imu_connected) { //If IMU not connected, fill with zeros
+    data_buffer->ax = 0.0f;
+    data_buffer->ay = 0.0f;
+    data_buffer->az = 0.0f;
+    data_buffer->gx = 0.0f;
+    data_buffer->gy = 0.0f;
+    data_buffer->gz = 0.0f;
+  }
+  else {
+    sensors_event_t accel, gyro, temp_imu; //Create sensor event structs
+    imu.getEvent(&accel, &gyro, &temp_imu); //Reads sensor data into structs
+    data_buffer->ax = accel.acceleration.x; //Fills data struct with accel and gyro data
+    data_buffer->ay = accel.acceleration.y;
+    data_buffer->az = accel.acceleration.z;
+    data_buffer->gx = gyro.gyro.x;
+    data_buffer->gy = gyro.gyro.y;
+    data_buffer->gz = gyro.gyro.z;
+  }
 
   //Barometer
-  data_buffer->temp_bmp = bmp.readTemperature(); //Reads data from BMP280 and fills data struct
-  data_buffer->pressure = bmp.readPressure() / 1000; //Convert Pa to kPa
-  data_buffer->altitude = bmp.readAltitude(1013.25); //Assumes sea level pressure of 101325 Pa
+  if (!bmp_connected) { //If BMP280 not connected, fill with zeros
+    data_buffer->temp_bmp = 0.0f;
+    data_buffer->pressure = 0.0f;
+    data_buffer->altitude = 0.0f;
+  }
+  else {
+    data_buffer->temp_bmp = bmp.readTemperature(); //Reads data from BMP280 and fills data struct
+    data_buffer->pressure = bmp.readPressure() / 1000; //Convert Pa to kPa
+    data_buffer->altitude = bmp.readAltitude(1013.25); //Assumes sea level pressure of 101325 Pa
+  }
 
   //Temperature and Humidity Sensor
-  sensors_event_t humidity, temp; //Create sensor event structs
-  sht4.getEvent(&humidity, &temp); //Reads sensor data into structs
-  data_buffer->humidity = humidity.relative_humidity; //Fills data struct with temp and humidity data
-  data_buffer->temp_sens = temp.temperature;
+  if (!sht4_connected) { //If SHT4x not connected, fill with zeros
+    data_buffer->humidity = 0.0f;
+    data_buffer->temp_sens = 0.0f;
+    return;
+  }
+  else {
+    sensors_event_t humidity, temp; //Create sensor event structs
+    sht4.getEvent(&humidity, &temp); //Reads sensor data into structs
+    data_buffer->humidity = humidity.relative_humidity; //Fills data struct with temp and humidity data
+    data_buffer->temp_sens = temp.temperature;
+  }
 }
 
 void getBufferLine(char *line, data_struct data_buffer) { //Converts data struct to string line for block writing to SD card
