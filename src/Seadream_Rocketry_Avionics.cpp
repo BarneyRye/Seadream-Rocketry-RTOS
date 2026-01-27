@@ -239,7 +239,7 @@ void SensorAudioTask(void *pvParameters) {
       Serial.print(data.gy); Serial.print(","); 
       Serial.println(data.gz);
       */
-      /*
+      ///*
       if (SD_connected) { //If SD card connected, proceed to buffer data for logging
         //Fill active buffer
         if (useBuffer1) { //If flag is true, fill buffer1
@@ -270,7 +270,7 @@ void SensorAudioTask(void *pvParameters) {
         }
         sd_reconnect_attempts++; //Increase reconnect attempts counter
       }
-      */
+      //*/
 
       initial_altitude = data.altitude; //Initial altitude at startup
       first_run = true;
