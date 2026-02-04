@@ -41,12 +41,12 @@ Adafruit BMP280
 //Log Rates
 #define initial_log_rate 50    // Hz, initial logging rate
 #define final_log_rate 10      // Hz, reduced logging rate for decent/slower speeds
-#define reduce_Hz_time 60      // s, time after which to reduce logging rate, e.g. time to apogee
+#define reduce_Hz_time 60      // s, time after which to reduce logging rate after takeoff
 #define MAX_BUFFER_LINES 5     // No. of data logs per buffer
 #define MAX_BUFFER_LENGTH 150  // Length of char buffer lines
 
 //Song timer
-#define song_start_time 240  //s, time to start song after startup
+#define song_start_time 0  //s, time to start song after apogee
 #define SONG_PATH "/song.mp3" //Name of song file on SD card
 
 //Object creating from libaries
@@ -94,9 +94,10 @@ void getNextLogFilename(char* name); //Generate next log filename if log1.csv ex
 void getData(data_struct *data_buffer); //Read sensors and fill data struct
 void getBufferLine(char *line, data_struct data_buffer); //Converts data struct to string line for block writing to SD card
 void char_buffer_write(uint8_t count, data_struct data_buffer, char data_char_buffer[][MAX_BUFFER_LENGTH]); //Writes line to array of char buffers
-void audio_start(uint32_t start_time, bool *audio_on); //Checks if it's time to start audio playback
-void logRate_reduce(uint32_t *log_rate, bool *reduced, uint32_t loop_start, bool takeoff); //Checks if it's time to reduce log rate and reduces it
+void audio_start(bool apogee, bool *audio_on); //Checks if it's time to start audio playback
+void logRate_reduce(uint32_t *log_rate, bool *reduced, bool takeoff); //Checks if it's time to reduce log rate and reduces it
 void takeoff_detection(bool *takeoff, float initial_altitude); //Detects takeoff based on accelerometer data
+void apogee_detection(bool *apogee, bool takeoff); //Detects apogee based on altitude data
 
 //FreeRTOS Tasks
 void SensorAudioTask(void *pvParameters); //Core 1 to handle sensor reading and audio playback
@@ -183,6 +184,7 @@ void loop() {
 void SensorAudioTask(void *pvParameters) {
   static bool audio_on = false; //Audio playback flag
   static bool takeoff = false; //Takeoff detected flag
+  static bool apogee = false; //Apogee detected flag
   static uint32_t log_rate = 1000 / initial_log_rate; //Sets initial log rate in ms, converts from Hz
   static bool reduced = false; //Log rate reduced flag
   static uint32_t last_log = 0; //Last log time
@@ -191,8 +193,12 @@ void SensorAudioTask(void *pvParameters) {
   static uint32_t loop_start = millis(); //Loop start time
 
   for (;;) { //Infinite loop for task
+
+    //Apogee Detection
+    if (!apogee) apogee_detection(&apogee, takeoff); //If apogee not detected yet, call apogee detection function to update apogee flag
+
     //Audio Playback
-    if (!audio_on) {audio_start(loop_start, &audio_on);} //If audio isn't on, check if it's time to start and start if so
+    if (!audio_on) {audio_start(apogee, &audio_on);} //If audio isn't on, check if it's time to start and start if so
     if (audio_on) { //If audio is on, call audio loop to keep playing
       audio.loop();
       if (!audio.isRunning()) { //If audio has finished playing
@@ -201,7 +207,7 @@ void SensorAudioTask(void *pvParameters) {
     }
 
     //Log Rate Reduction
-    if (!reduced) logRate_reduce(&log_rate, &reduced, loop_start, takeoff); //If log rate hasn't been reduced yet, check if it's time to reduce it and reduce if so
+    if (!reduced) logRate_reduce(&log_rate, &reduced, takeoff); //If log rate hasn't been reduced yet, check if it's time to reduce it and reduce if so
      
     //Data Logging
     if (millis() - last_log >= log_rate) { //If it's time to log data, i.e. time since last log >= log rate
@@ -324,8 +330,12 @@ void getNextLogFilename(char *name) { //Gets next available log filename
   }
 }
 
-void audio_start(uint32_t start_time, bool *audio_on) { //Checks if it's time to start audio playback
-  if (millis() - start_time >= (song_start_time * 1000)) { //If time since start >= song start time
+void audio_start(bool apogee, bool *audio_on) { //Checks if it's time to start audio playback
+  static uint32_t apogee_time = 0; //Start time for audio playback timer
+  if (apogee && apogee_time == 0) { //If apogee detected
+    apogee_time = millis(); //Sets apogee time to current time
+  }
+  if (millis() - apogee_time >= (song_start_time * 1000) && apogee_time != 0) { //If apogee detected and time since apogee >= song start time
     if(audio.connecttoFS(SD, SONG_PATH)) { //Connect to song file on SD card and start playing
     *audio_on = true; //Set audio on flag to true
     }
@@ -348,8 +358,32 @@ void takeoff_detection(bool *takeoff, float initial_altitude) { //Detects takeof
   }
 }
 
-void logRate_reduce(uint32_t *log_rate, bool *reduced, uint32_t loop_start, bool takeoff) { //Checks if it's time to reduce log rate and reduces it
-  if ((millis() - loop_start >= (reduce_Hz_time * 1000)) && takeoff) { //If time since start >= reduce time
+void apogee_detection(bool *apogee, bool takeoff) { //Detects apogee based on altitude data
+  if (!takeoff) return; //If takeoff not detected, exit function
+  static uint32_t period_start = millis(); //Start time for apogee detection period
+  static float start_altitude = 0.0f; //Altitude at start of apogee detection period
+  if (period_start - millis() >= 5000) { //If 5 seconds have passed since start of period
+    if (useBuffer1){
+      if (buffer1[bufferIndex].altitude < start_altitude){ //If altitude has decreased since start of period
+        *apogee = true; //Sets apogee flag to true
+      }
+    }
+    else{
+      if (buffer2[bufferIndex].altitude < start_altitude){ //If altitude has decreased since start of period
+        *apogee = true; //Sets apogee flag to true
+      }
+    }
+    start_altitude = buffer1[bufferIndex].altitude; //Updates start altitude for next period
+    period_start = millis(); //Resets period start time
+  }
+}
+
+void logRate_reduce(uint32_t *log_rate, bool *reduced, bool takeoff) { //Checks if it's time to reduce log rate and reduces it
+  static uint32_t takeoff_time = 0; //Time of takeoff detection
+  if (takeoff && takeoff_time == 0) { //If takeoff detected
+    takeoff_time = millis(); //Sets takeoff time to current time
+  }
+  if ((millis() - takeoff_time >= (reduce_Hz_time * 1000)) && takeoff) { //If time since start >= reduce time
     *log_rate = 1000 / final_log_rate; //Sets log rate to final log rate in ms, converts from Hz
     *reduced = true; //Sets reduced flag to true
     if (bmp_connected) {
