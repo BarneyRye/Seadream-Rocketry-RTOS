@@ -46,7 +46,7 @@ Adafruit BMP280
 #define MAX_BUFFER_LENGTH 150  // Length of char buffer lines
 
 //Song timer
-#define song_start_time 0  //s, time to start song after apogee
+#define song_start_time 180  //s, time to start song after apogee
 #define SONG_PATH "/song.mp3" //Name of song file on SD card
 
 //Object creating from libaries
