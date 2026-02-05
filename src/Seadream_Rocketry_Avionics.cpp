@@ -41,7 +41,8 @@ Adafruit BMP280
 //Log Rates
 #define initial_log_rate 50    // Hz, initial logging rate
 #define final_log_rate 10      // Hz, reduced logging rate for decent/slower speeds
-#define reduce_Hz_time 60      // s, time after which to reduce logging rate after takeoff
+#define reduce_Hz_time 180      // s, time after which to reduce logging rate after takeoff
+//Can be set to reduce at apogee instead of a timer
 #define MAX_BUFFER_LINES 5     // No. of data logs per buffer
 #define MAX_BUFFER_LENGTH 150  // Length of char buffer lines
 
@@ -185,6 +186,7 @@ void SensorAudioTask(void *pvParameters) {
   static bool audio_on = false; //Audio playback flag
   static bool takeoff = false; //Takeoff detected flag
   static bool apogee = false; //Apogee detected flag
+  static bool landed = false; //Landed flag
   static uint32_t log_rate = 1000 / initial_log_rate; //Sets initial log rate in ms, converts from Hz
   static bool reduced = false; //Log rate reduced flag
   static uint32_t last_log = 0; //Last log time
@@ -210,7 +212,7 @@ void SensorAudioTask(void *pvParameters) {
     if (!reduced) logRate_reduce(&log_rate, &reduced, takeoff); //If log rate hasn't been reduced yet, check if it's time to reduce it and reduce if so
      
     //Data Logging
-    if (millis() - last_log >= log_rate) { //If it's time to log data, i.e. time since last log >= log rate
+    if (millis() - last_log >= log_rate && !landed) { //If it's time to log data, i.e. time since last log >= log rate and not landed
       uint32_t now = millis(); //Time for current logging iteration
       static uint32_t data_start = now; //First data log time
       
@@ -378,12 +380,38 @@ void apogee_detection(bool *apogee, bool takeoff) { //Detects apogee based on al
   }
 }
 
+void landing_detection(bool *landed, bool takeoff, bool apogee) { //Detects landing based on altitude data
+  if (!takeoff || !apogee) return; //If takeoff or apogee not detected, exit function
+  static uint32_t apogee_time = 0; //Time of apogee detection
+  if (apogee && apogee_time == 0) { //If apogee detected
+    apogee_time = millis(); //Sets apogee time to current time
+  }
+  if (millis() - apogee_time < 60000) return; //If it's been less than 60 seconds since apogee, exit function, prevents false landing detection during decent
+  static uint32_t period_start = millis(); //Start time for landing detection period
+  static float start_altitude = 0.0f; //Altitude at start of landing detection period
+  if (period_start - millis() >= 10000) { //If 10 seconds have passed since start of period
+    if (useBuffer1){
+      if (buffer1[bufferIndex].altitude > start_altitude - 5){ //If altitude has decreased to within 5m of start altitude since start of period
+        *landed = true; //Sets landed flag to true
+      }
+    }
+    else{
+      if (buffer2[bufferIndex].altitude > start_altitude - 5){ //If altitude has decreased to within 5m of start altitude since start of period
+        *landed = true; //Sets landed flag to true
+      }
+    }
+    start_altitude = buffer1[bufferIndex].altitude; //Updates start altitude for next period
+    period_start = millis(); //Resets period start time
+  }
+}
+
 void logRate_reduce(uint32_t *log_rate, bool *reduced, bool takeoff) { //Checks if it's time to reduce log rate and reduces it
+  if (!takeoff) return; //If takeoff not detected, exit function
   static uint32_t takeoff_time = 0; //Time of takeoff detection
   if (takeoff && takeoff_time == 0) { //If takeoff detected
     takeoff_time = millis(); //Sets takeoff time to current time
   }
-  if ((millis() - takeoff_time >= (reduce_Hz_time * 1000)) && takeoff) { //If time since start >= reduce time
+  if ((millis() - takeoff_time >= (reduce_Hz_time * 1000)) && takeoff) { //If time since takeoff >= reduce time
     *log_rate = 1000 / final_log_rate; //Sets log rate to final log rate in ms, converts from Hz
     *reduced = true; //Sets reduced flag to true
     if (bmp_connected) {
