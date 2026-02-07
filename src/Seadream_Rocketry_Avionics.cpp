@@ -48,7 +48,7 @@ Adafruit BMP280
 
 //Song timer
 #define song_start_time 180  //s, time to start song after apogee
-#define SONG_PATH "/song.mp3" //Name of song file on SD card
+#define SONG_PATH "/Homecoming.mp3" //Name of song file on SD card
 
 //Object creating from libaries
 Adafruit_SHT4x sht4 = Adafruit_SHT4x(); //Temperature and Humidity sensor
