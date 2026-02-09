@@ -41,8 +41,7 @@ Adafruit BMP280
 //Log Rates
 #define initial_log_rate 50    // Hz, initial logging rate
 #define final_log_rate 10      // Hz, reduced logging rate for decent/slower speeds
-#define reduce_Hz_time 180      // s, time after which to reduce logging rate after takeoff
-//Can be set to reduce at apogee instead of a timer
+#define reduce_Hz_time 60      // s, time after which to reduce logging rate after apogee
 #define MAX_BUFFER_LINES 5     // No. of data logs per buffer
 #define MAX_BUFFER_LENGTH 150  // Length of char buffer lines
 
@@ -61,9 +60,9 @@ typedef struct { //struct to store sensor data
   uint32_t time; //TIme of log in ms
   float humidity; //Humidity in %
   float temp_sens; //Temp in C from SHT4x
-  float temp_bmp; //Temp in C from BMP180
-  float pressure; //Pressure in kPa from BMP180
-  float altitude; //Altitude in M from BMP180
+  float temp_bmp; //Temp in C from BMP280
+  float pressure; //Pressure in kPa from BMP280
+  float altitude; //Altitude in M from BMP280
   float ax; //Acceleration X in m/s^2
   float ay; //Acceleration Y in m/s^2
   float az; //Acceleration Z in m/s^2
@@ -96,7 +95,7 @@ void getData(data_struct *data_buffer); //Read sensors and fill data struct
 void getBufferLine(char *line, data_struct data_buffer); //Converts data struct to string line for block writing to SD card
 void char_buffer_write(uint8_t count, data_struct data_buffer, char data_char_buffer[][MAX_BUFFER_LENGTH]); //Writes line to array of char buffers
 void audio_start(bool apogee, bool *audio_on); //Checks if it's time to start audio playback
-void logRate_reduce(uint32_t *log_rate, bool *reduced, bool takeoff); //Checks if it's time to reduce log rate and reduces it
+void logRate_reduce(uint32_t *log_rate, bool *reduced, bool apogee); //Checks if it's time to reduce log rate and reduces it
 void takeoff_detection(bool *takeoff, float initial_altitude); //Detects takeoff based on accelerometer data
 void apogee_detection(bool *apogee, bool takeoff); //Detects apogee based on altitude data
 
@@ -112,7 +111,7 @@ void setup() {
 
   //I2C
   Wire.begin(I2C_SDA, I2C_SCL); //Connect I2C to specified pins
-  Wire.setClock(100000); //Set I2C clock frequency to 100kHz
+  Wire.setClock(400000); //Set I2C clock frequency to 400kHz
   delay(1000); //Wait for I2C to stabilise
 
   //SPI
@@ -121,9 +120,9 @@ void setup() {
   //Accelerometer and Gyro
   if (!imu.begin_I2C()) {Serial.println(F("Failed to find Accelerometer")); } //Begins I2C connection to Accel/Gyro, if fails, print failure to serial
   else {
-  imu.setAccelDataRate(LSM6DS_RATE_52_HZ); //Sets accelerometer data rate to 52Hz
+  imu.setAccelDataRate(LSM6DS_RATE_833_HZ); //Sets accelerometer data rate to 52Hz
   imu.setAccelRange(LSM6DSO32_ACCEL_RANGE_32_G); //Sets accelerometer range to 32G
-  imu.setGyroDataRate(LSM6DS_RATE_52_HZ); //Sets gyro data rate to 52Hz
+  imu.setGyroDataRate(LSM6DS_RATE_833_HZ); //Sets gyro data rate to 52Hz
   imu.setGyroRange(LSM6DS_GYRO_RANGE_2000_DPS); //Sets gyro range to 2000 degrees per second
   imu_connected = true; //Sets IMU connected flag to true
   }
@@ -224,13 +223,13 @@ void SensorAudioTask(void *pvParameters) {
       last_log = now; //Sets last log time to now
 
       //Print data to serial for debugging
-      ///*
+      /*
       Serial.print("Time: "); Serial.print(data.time);
       Serial.print(" ms, Humidity: "); Serial.print(data.humidity); Serial.print(" %, Temp: "); Serial.print(data.temp_sens); Serial.print(" C");
       Serial.print(", Temp_BMP: "); Serial.print(data.temp_bmp); Serial.print(" C, Pressure: "); Serial.print(data.pressure); Serial.print(" kPa, Altitude: "); Serial.print(data.altitude); Serial.print(" m");
       Serial.print(", Accel (m/s^2): X "); Serial.print(data.ax); Serial.print(" Y "); Serial.print(data.ay); Serial.print(" Z "); Serial.print(data.az);
       Serial.print(", Gyro (deg/s): X "); Serial.print(data.gx); Serial.print(" Y "); Serial.print(data.gy); Serial.print(" Z "); Serial.println(data.gz); 
-      //*/
+      */
 
       //CSV format for easy import to analysis software
       /*
@@ -405,27 +404,15 @@ void landing_detection(bool *landed, bool takeoff, bool apogee) { //Detects land
   }
 }
 
-void logRate_reduce(uint32_t *log_rate, bool *reduced, bool takeoff) { //Checks if it's time to reduce log rate and reduces it
-  if (!takeoff) return; //If takeoff not detected, exit function
-  static uint32_t takeoff_time = 0; //Time of takeoff detection
-  if (takeoff && takeoff_time == 0) { //If takeoff detected
-    takeoff_time = millis(); //Sets takeoff time to current time
+void logRate_reduce(uint32_t *log_rate, bool *reduced, bool apogee) { //Checks if it's time to reduce log rate and reduces it
+  if (!apogee) return; //If apogee not detected, exit function
+  static uint32_t apogee_time = 0; //Time of apogee detection
+  if (apogee && apogee_time == 0) { //If apogee detected
+    apogee_time = millis(); //Sets apogee time to current time
   }
-  if ((millis() - takeoff_time >= (reduce_Hz_time * 1000)) && takeoff) { //If time since takeoff >= reduce time
+  if ((millis() - apogee_time >= (reduce_Hz_time * 1000)) && apogee) { //If time since apogee >= reduce time
     *log_rate = 1000 / final_log_rate; //Sets log rate to final log rate in ms, converts from Hz
     *reduced = true; //Sets reduced flag to true
-    if (bmp_connected) {
-      bmp.setSampling(Adafruit_BMP280::MODE_NORMAL,     
-                      Adafruit_BMP280::SAMPLING_X2,   
-                      Adafruit_BMP280::SAMPLING_X16, 
-                      Adafruit_BMP280::FILTER_X16,     
-                      Adafruit_BMP280::STANDBY_MS_63);
-    }
-    if (imu_connected) {
-      imu.setAccelDataRate(LSM6DS_RATE_12_5_HZ); //Sets accelerometer data rate to 12.5Hz
-      imu.setGyroDataRate(LSM6DS_RATE_12_5_HZ); //Sets gyro data rate to 12.5Hz
-    
-    }
   }
 }
 
