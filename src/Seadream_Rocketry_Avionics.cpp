@@ -120,11 +120,12 @@ void setup() {
   //Accelerometer and Gyro
   if (!imu.begin_I2C()) {Serial.println(F("Failed to find Accelerometer")); } //Begins I2C connection to Accel/Gyro, if fails, print failure to serial
   else {
-  imu.setAccelDataRate(LSM6DS_RATE_833_HZ); //Sets accelerometer data rate to 52Hz
-  imu.setAccelRange(LSM6DSO32_ACCEL_RANGE_32_G); //Sets accelerometer range to 32G
-  imu.setGyroDataRate(LSM6DS_RATE_833_HZ); //Sets gyro data rate to 52Hz
-  imu.setGyroRange(LSM6DS_GYRO_RANGE_2000_DPS); //Sets gyro range to 2000 degrees per second
-  imu_connected = true; //Sets IMU connected flag to true
+    imu.setAccelDataRate(LSM6DS_RATE_833_HZ); //Sets accelerometer data rate to 52Hz
+    imu.setAccelRange(LSM6DSO32_ACCEL_RANGE_32_G); //Sets accelerometer range to 32G
+    imu.setGyroDataRate(LSM6DS_RATE_833_HZ); //Sets gyro data rate to 52Hz
+    imu.setGyroRange(LSM6DS_GYRO_RANGE_2000_DPS); //Sets gyro range to 2000 degrees per second
+    imu_connected = true; //Sets IMU connected flag to true
+    Serial.println(F("Accelerometer found")); //Prints success message to serial
   }
   
   //Barometer
@@ -135,7 +136,8 @@ void setup() {
                     Adafruit_BMP280::SAMPLING_X1,    
                     Adafruit_BMP280::FILTER_OFF,  
                     Adafruit_BMP280::STANDBY_MS_1); 
-    bmp_connected = true; //Sets BMP280 connected flag to true
+    bmp_connected = true; //Sets BMP280 connected flag to true#
+    Serial.println(F("Barometer found")); //Prints success message to serial
   }
   //Temperature and Humidity Sensor
   if (!sht4.begin(&Wire)) { Serial.println(F("Temperature/Humidity sensor not found")); } //Begins I2C connection to Temp/Humidity sensor, if fails, print failure to serial
